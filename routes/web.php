@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(PostController::class)->middleware(['auth'])->group(function(){
+    Route::get('/homework/create', 'create')->name('create');
+    Route::get('/homework/show', 'index')->name('index');
 });
 
 Route::get('/dashboard', function () {
