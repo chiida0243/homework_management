@@ -22,8 +22,8 @@
                 <h2>締め切り</h2>
                 <input type="date" name="post[deadline]">
             </div>
-            <input type="submit" value="登録"/>
+        <br>
+            <button type="submit"  value="store">保存</button>
         </form>
-        <div><a href="/">戻る</a></div>
     </body>
 </html>
