@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Homework;
 use Illuminate\Support\Facades\Auth;
 
+
 use Cloudinary;
 use App\Http\Requests\PostRequest;
 
@@ -41,6 +42,13 @@ class PostController extends Controller
         $post->fill($input)->save();
         return redirect('homework/task_index');
     }
+    public function task_index(){
+        $posts_grouped = Post::orderBy('deadline')->get()->groupBy(function($itr){
+           return Carbon::parse($itr->deadline)->format('Y-m-d');
+           });
+        //dd($post);
+        return view('homework.task_index')->with(['posts_grouped' =>$posts_grouped]);
+    }
 
     public function create(Post $post)
     {
@@ -56,4 +64,18 @@ class PostController extends Controller
     {
         return view('homework/submit_index')->with(['homeworks'=> $homework->where('user_id','=' ,Auth::id())-> get()]);
     }
+    
+    public function submit_store(Request $request, Homework $homework, Post $post)
+    {
+        
+        
+        $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input =['homework_url'=>$image_url];
+        $input['user_id'] = Auth::id();
+        $input['post_id'] = $post->id;
+        $post->fill($input)->save();
+        return redirect('homework/index');
+    }
+
+
 }
