@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
+    Route::post('/homework_student/{post}', 'submit_store')->name('submit_store');
     Route::post('/homework', 'store')->name('store');
     Route::get('/homework/create', 'create')->name('create');
     Route::get('/homework/index', 'index')->name('index');

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class homework extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'homework_url',
+        
+    ];
 }
