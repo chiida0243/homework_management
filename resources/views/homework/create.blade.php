@@ -7,7 +7,7 @@
     <body>
         <h1>宿題管理システム</h1>
         <h2>先生宿題投稿画面</h2>
-        <form action="/homework" method="POST"　enctype="multipart/form-data">
+        <form action="/homework" method="POST"enctype="multipart/form-data">
             @csrf
             <div>
                 <h2>課題名</h2>
@@ -16,7 +16,7 @@
             </div>
             <div>
                 <h2>写真</h2>
-　　　　　　　　<input type="file" name="image">
+            <input type="file" name="image">
             </div>
             <div>
                 <h2>締め切り</h2>
