@@ -17,7 +17,7 @@
                     <h2>{{ $post->deadline }}</h2>
                     <p>
                         締切日：{{ $post->deadline }}
-                        宿題：<a href="/posts/{{ $post->id }}">{{ $post->homework_name }}</a>
+                        宿題：<a href="/homework/{{ $post->id }}">{{ $post->homework_name }}</a>
                     </p>
                     </div>
                 @endforeach
