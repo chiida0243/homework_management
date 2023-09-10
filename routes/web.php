@@ -20,8 +20,10 @@ Route::get('/', function () {
 });
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
+    Route::post('/homework', 'store')->name('store');
     Route::get('/homework/create', 'create')->name('create');
-    Route::get('/homework/show', 'index')->name('index');
+    Route::get('/homework/index', 'index')->name('index');
+    // Route::get('homework/submit_index/{post}', 'submit_index')->name('submit_index');
 });
 
 Route::get('/dashboard', function () {

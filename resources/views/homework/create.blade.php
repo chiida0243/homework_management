@@ -7,7 +7,7 @@
     <body>
         <h1>宿題管理システム</h1>
         <h2>先生宿題投稿画面</h2>
-        <form action="/posts" method="POST"　enctype="multipart/form-data">
+        <form action="/homework" method="POST"　enctype="multipart/form-data">
             @csrf
             <div>
                 <h2>課題名</h2>
@@ -22,8 +22,8 @@
                 <h2>締め切り</h2>
                 <input type="date" name="post[deadline]">
             </div>
-            <input type="submit" value="登録"/>
+        <br>
+            <button type="submit"  value="store">保存</button>
         </form>
-        <div><a href="/">戻る</a></div>
     </body>
 </html>
