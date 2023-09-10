@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use DateTime;
+use Illuminate\Support\Facades\Hash;
 
 class PostSeeder extends Seeder
 {
@@ -16,28 +17,44 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('posts')->truncate();
         DB::table('posts')->insert([
-            'title' => 'チーム開発会って？',
-            'body' => 'チームで協力して一つの成果物を作るイベントです！メンバー全員で助け合いましょう！',
+            'homework_name' => '数学',
+            'image_url' => 'test',
+            'user_id' => 1,
             'category_id' => 1,
+            'deadline' => '2023-09-11',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
-
         DB::table('posts')->insert([
-            'title' => '役割分担',
-            'body' => 'これはborderという、cssでつけることができる枠線です！'.PHP_EOL.'太さの指定や形など色々指定できるので、気になった方はコードを覗いてみたり、調べてみたりしましょう！'.PHP_EOL.'また、このプロジェクト内ではインラインCSSという、HTML内に書く簡易的なCSSを使用しています！こちらも気になった方は見てみてください！',
-            'category_id' => 2,
+            'homework_name' => '国語',
+            'image_url' => 'test',
+            'user_id' => 2,
+            'category_id' => 1,
+            'deadline' => '2023-09-11',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
-
         DB::table('posts')->insert([
-            'title' => 'この枠線みたいなやつって何？',
-            'body' => '開発を進める際は、役割分担をすると効率的に開発をすることができます！'.PHP_EOL.'具',
-            'category_id' => 2,
+            'homework_name' => '数学',
+            'image_url' => 'test',
+            'user_id' => 1,
+            'category_id' => 1,
+            'deadline' => '2023-09-14',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
+        DB::table('posts')->insert([
+            'homework_name' => '英語',
+            'image_url' => 'test',
+            'user_id' => 3,
+            'category_id' => 1,
+            'deadline' => '2023-09-15',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
