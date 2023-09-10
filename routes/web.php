@@ -21,7 +21,8 @@ Route::get('/', function () {
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/homework/create', 'create')->name('create');
-    Route::get('/homework/show', 'index')->name('index');
+    Route::get('/homework/index', 'index')->name('index');
+    Route::get('/homework/{post}', 'submit')->name('submit');
 });
 
 Route::get('/dashboard', function () {

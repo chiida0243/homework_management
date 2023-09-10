@@ -22,6 +22,11 @@ class PostController extends Controller
     {
         return view('homework/create')/*->with(['categories' => $category->get()])*/;
     }
+    
+    public function submit(Request $request, Post $post)
+    {
+        return view('homework/submit')->with(['post' => $post]);
+    }
 
     // public function store(Post $post, Request $request)
     // {
