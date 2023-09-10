@@ -13,9 +13,12 @@ class PostController extends Controller
     //     return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
     // }
 
-    public function index(Post $post)
+    public function index()
     {
-        return view('homework/index')->with(['posts' => $post->getPaginateByLimit()]);
+       $post = Post::orderBy('deadline')->get()->groupBy(function($date){
+           return Carbon::parse($date->deadline)->format('Y-m-d');
+           });
+        return view('homework/index')->with(['posts' => $post]);
     }
 
     public function create(Post $post)
