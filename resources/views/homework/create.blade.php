@@ -7,7 +7,7 @@
     <body>
         <h1>宿題管理システム</h1>
         <h2>先生宿題投稿画面</h2>
-        <form action="/homework" method="POST"enctype="multipart/form-data">
+        <form action="/homework" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h2>課題名</h2>
