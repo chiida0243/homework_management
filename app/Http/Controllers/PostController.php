@@ -39,6 +39,13 @@ class PostController extends Controller
         $post->fill($input)->save();
         return redirect('homework/task_index');
     }
+    public function task_index(){
+        $posts_grouped = Post::orderBy('deadline')->get()->groupBy(function($itr){
+           return Carbon::parse($itr->deadline)->format('Y-m-d');
+           });
+        //dd($post);
+        return view('homework.task_index')->with(['posts_grouped' =>$posts_grouped]);
+    }
 
     public function create(Post $post)
     {
