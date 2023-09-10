@@ -10,16 +10,17 @@
         <h1>宿題一覧画面</h1>
         <!--<a href='/posts/create'>新規投稿</a>-->
         <div>
-            @foreach ($posts as $post)
-                <!--<div style='border:solid 1px; margin-bottom: 10px;'>-->
-                <h2>{{ $post->deadline }}</h2>
-                    @foreach($homeworkList as $homework)
+            @foreach ($posts_grouped as $posts)
+                <p>ここで日付が変わる</p>
+                @foreach($posts as $post)
+                    <!--<div style='border:solid 1px; margin-bottom: 10px;'>-->
+                    <h2>{{ $post->deadline }}</h2>
                     <p>
-                        締切日：{{ $homework->deadline }}
+                        締切日：{{ $post->deadline }}
                         宿題：<a href="/posts/{{ $post->id }}">{{ $post->homework_name }}</a>
                     </p>
-                   @endforeach
-                </div>
+                    </div>
+                @endforeach
             @endforeach
             
         </div>

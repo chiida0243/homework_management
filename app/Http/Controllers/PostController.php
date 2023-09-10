@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use Carbon\carbon;
 
 class PostController extends Controller
 {
@@ -15,10 +16,13 @@ class PostController extends Controller
 
     public function index()
     {
-       $post = Post::orderBy('deadline')->get()->groupBy(function($date){
-           return Carbon::parse($date->deadline)->format('Y-m-d');
+        // $posts = $post->get();
+        // deadline->format('Y-m-d');
+        $posts_grouped = Post::orderBy('deadline')->get()->groupBy(function($itr){
+           return Carbon::parse($itr->deadline)->format('Y-m-d');
            });
-        return view('homework/index')->with(['posts' => $post]);
+        //dd($post);
+        return view('homework/index')->with(['posts_grouped' =>$posts_grouped]);
     }
 
     public function create(Post $post)
