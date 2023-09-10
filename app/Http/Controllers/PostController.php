@@ -33,13 +33,22 @@ class PostController extends Controller
     }
     
     public function store(Post $post, PostRequest $request){
-  
-   $input = $request['post'];
-    $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-    $input +=['image_url'=>$image_url];
-   $post->fill($input)->save();
-    return redirect('homework/task_index');
-}
+        $user_id = auth()->user()->id;
+
+        $input = $request['post'];
+        $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input +=['image_url'=>$image_url];
+        $input['user_id'] = $user_id;
+        $post->fill($input)->save();
+        return redirect('homework/task_index');
+    }
+    public function task_index(){
+        $posts_grouped = Post::orderBy('deadline')->get()->groupBy(function($itr){
+           return Carbon::parse($itr->deadline)->format('Y-m-d');
+           });
+        //dd($post);
+        return view('homework.task_index')->with(['posts_grouped' =>$posts_grouped]);
+    }
 
     public function create(Post $post)
     {
@@ -64,29 +73,5 @@ class PostController extends Controller
         return redirect('homework/index');
     }
 
-//   public function submit_index(Post $post)
-//   {
-       
-//       return view('homework/submit_index')->with(['posts'=> $post->getPaginateByLimit()]);
-//   }
-    // public function store(Post $post, Request $request)
-    // {
-    //     $input = $request['post'];
-    //     $post->fill($input)->save();
-    //     return redirect('/posts/' . $post->id);
-    // }
-
-    // public function edit(Post $post)
-    // {
-    //     return view('posts/edit')->with(['post' => $post]);
-    // }
-
-    // public function update(Request $request, Post $post)
-    // {
-    //     $input_post = $request['post'];
-    //     $post->fill($input_post)->save();
-
-    //     return redirect('/posts/' . $post->id);
-    // }
 
 }

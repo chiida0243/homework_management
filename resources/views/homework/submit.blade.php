@@ -7,20 +7,23 @@
     <body>
         <h1>宿題管理システム</h1>
         <h2>生徒宿題提出画面</h2>
-        <!--<form action="/homework_student" method="POST"　enctype="multipart/form-data">-->
+
         <form action="/homework_student/{{ $post->id }}" method="POST" enctype="multipart/form-data">
+
             @csrf
             <div>
                 <h2>{{ $post->homework_name }}</h2>
             </div>
             <div>
-                <img src="{{ $post->image_url }}">
+            <img src="{{ $post->image_url }}">
             </div>
             <h2>写真</h2>
             <div>
+
                 
 　　　　　　　　<input type="file" name="image">
 　　　　　　　　
+
             </div>
             <div>
                 <h2>締め切り</h2>
