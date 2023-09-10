@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use DateTime;
+use Illuminate\Support\Facades\Hash;
 
 class PostSeeder extends Seeder
 {
@@ -36,6 +37,38 @@ class PostSeeder extends Seeder
             'title' => 'この枠線みたいなやつって何？',
             'body' => '開発を進める際は、役割分担をすると効率的に開発をすることができます！'.PHP_EOL.'具',
             'category_id' => 2,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('posts')->insert([
+            'homework_name' => '数学',
+            'image_url' => 'test',
+            'user_id' => //数字,
+            'deadline' => '2023-09-11',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('posts')->insert([
+            'homework_name' => '国語',
+            'image_url' => 'test',
+            'user_id' => //数字,
+            'deadline' => '2023-09-11',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('posts')->insert([
+            'homework_name' => '数学',
+            'image_url' => 'test',
+            'user_id' => //数字,
+            'deadline' => '2023-09-14',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('posts')->insert([
+            'homework_name' => '英語',
+            'image_url' => 'test',
+            'user_id' => //数字,
+            'deadline' => '2023-09-15',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
