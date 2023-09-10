@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Homework;
+use Illuminate\Support\Facades\Auth;
+
 
 use Cloudinary;
 use App\Http\Requests\PostRequest;
@@ -47,6 +50,18 @@ class PostController extends Controller
     public function submit(Request $request, Post $post)
     {
         return view('homework/submit')->with(['post' => $post]);
+    }
+    
+    public function submit_store(Request $request, Homework $homework, Post $post)
+    {
+        
+        
+        $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input =['homework_url'=>$image_url];
+        $input['user_id'] = Auth::id();
+        $input['post_id'] = $post->id;
+        $post->fill($input)->save();
+        return redirect('homework/index');
     }
 
 //   public function submit_index(Post $post)

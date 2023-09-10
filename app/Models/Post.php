@@ -18,6 +18,7 @@ class Post extends Model
         'deadline',
         'image_url',
         'deadline',
+        
     ];
 
     public function getPaginateByLimit(int $limit_count = 5)
