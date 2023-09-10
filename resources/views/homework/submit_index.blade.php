@@ -13,16 +13,16 @@
         
         <div>
                 <h3>提出済課題</h3>
-            @foreach ($posts as $post)
+            @foreach ($homeworks as $homework)
                 <div style='border:solid 1px; margin-bottom: 10px;'>
                     <div class="submit_homework">
-                     <p>{{ $post->title }}</p>
-                     <p>{{ $post->image_url}}</p>
+                     <p>{{ $homework->post->homework_name }}</p>
+                     <img src="{{ $homework->image_url}}" alt="画像が読み込めません。"/>
                 </div>
             @endforeach
         </div>
         <div>
-            {{ $posts->links() }}
+        <a href="{{route('homework_index') }}">一覧に戻る</a>   
         </div>
     </body>
 </html>

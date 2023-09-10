@@ -60,6 +60,10 @@ class PostController extends Controller
     {
         return view('homework/submit')->with(['post' => $post]);
     }
+    public function submit_index(Homework $homework)
+    {
+        return view('homework/submit_index')->with(['homeworks'=> $homework->where('user_id','=' ,Auth::id())-> get()]);
+    }
     
     public function submit_store(Request $request, Homework $homework, Post $post)
     {

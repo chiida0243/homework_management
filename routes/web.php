@@ -23,7 +23,10 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::post('/homework_student/{post}', 'submit_store')->name('submit_store');
     Route::post('/homework', 'store')->name('store');
     Route::get('/homework/create', 'create')->name('create');
-    Route::get('/homework/index', 'index')->name('index');
+
+    Route::get('/homework/index', 'index')->name('homework_index');
+    Route::get('/homework/submitted', 'submit_index')->name('submit_index');
+
     Route::get('/homework/task_index', 'task_index')->name('task_index');
     Route::get('/homework/{post}', 'submit')->name('submit');
 });
