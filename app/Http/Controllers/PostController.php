@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Homework;
+use Illuminate\Support\Facades\Auth;
 
 use Cloudinary;
 use App\Http\Requests\PostRequest;
@@ -50,6 +52,8 @@ class PostController extends Controller
     {
         return view('homework/submit')->with(['post' => $post]);
     }
-
-
+    public function submit_index(Homework $homework)
+    {
+        return view('homework/submit_index')->with(['homeworks'=> $homework->where('user_id','=' ,Auth::id())-> get()]);
+    }
 }
